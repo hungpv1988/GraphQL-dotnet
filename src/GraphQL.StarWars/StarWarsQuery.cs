@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using GraphQL.StarWars.Types;
 using GraphQL.Types;
 
@@ -11,6 +11,7 @@ namespace GraphQL.StarWars
             Name = "Query";
 
             Field<CharacterInterface>("hero", resolve: context => data.GetDroidByIdAsync("3"));
+
             Field<HumanType>(
                 "human",
                 arguments: new QueryArguments(
@@ -27,6 +28,14 @@ namespace GraphQL.StarWars
                     new QueryArgument<NonNullGraphType<StringGraphType>> { Name = "id", Description = "id of the droid" }
                 ),
                 resolve: func
+            );
+
+            Field<EPiServerManType>(
+                "episerverman",
+                arguments: new QueryArguments(
+                    new QueryArgument<NonNullGraphType<StringGraphType>> { Name = "id", Description = "id of the human" }
+                ),
+                resolve: context => data.GetEPiServerManById(context.GetArgument<string>("id"))
             );
         }
     }

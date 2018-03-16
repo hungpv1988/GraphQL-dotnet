@@ -21,6 +21,7 @@ namespace GraphQL.GraphiQLCore
             services.AddSingleton<StarWarsQuery>();
             services.AddSingleton<StarWarsMutation>();
             services.AddSingleton<HumanType>();
+            services.AddSingleton<EPiServerManType>();
             services.AddSingleton<HumanInputType>();
             services.AddSingleton<DroidType>();
             services.AddSingleton<CharacterInterface>();

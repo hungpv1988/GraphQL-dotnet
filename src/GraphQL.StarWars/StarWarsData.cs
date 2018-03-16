@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -74,6 +74,63 @@ namespace GraphQL.StarWars
             human.Id = Guid.NewGuid().ToString();
             _humans.Add(human);
             return human;
+        }
+
+        public string[] GetAddonRelated(EPiServerMan man) {
+            string[] addedRelated = null;
+
+            switch (man.Id)
+            {
+                case "1": addedRelated = new string[] { "Forms", "LM" }; break;
+                case "2": addedRelated = new string[] { "OP", "GA" }; break;
+                case "3": addedRelated = new string[] { "CA", "Headless" }; break;
+                default: addedRelated = new string[] { "ALL" }; break;
+            }
+
+            return addedRelated;
+        }
+
+        public EPiServerMan GetEPiServerManById(string id)
+        {
+            EPiServerMan man= null;
+
+            switch (id)
+            {
+                case "1": man = new EPiServerMan() {
+                    Department = "Addon",
+                    EpiServerCode = "1",
+                    EmployeeId = 1,
+                    Name = "Phan Van Hung"
+                } ; break;
+
+                case "2":
+                    man = new EPiServerMan()
+                    {
+                        Department = "Addon",
+                        EpiServerCode = "2",
+                        EmployeeId = 2,
+                        Name = "Nguyen Dac Thach"
+                    }; break;
+
+                case "3":
+                    man = new EPiServerMan()
+                    {
+                        Department = "Addon",
+                        EpiServerCode = "3",
+                        EmployeeId = 3,
+                        Name = "Gile"
+                    }; break;
+                default:
+                    man = new EPiServerMan()
+                    {
+                        Department = "Addon",
+                        EpiServerCode = "4",
+                        EmployeeId = 4,
+                        Name = "Quan Kool"
+                    }; break;
+            }
+
+            return man;
         }
     }
 }

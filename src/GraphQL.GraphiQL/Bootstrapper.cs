@@ -1,4 +1,4 @@
-﻿using GraphQL.Http;
+using GraphQL.Http;
 using GraphQL.StarWars;
 using GraphQL.StarWars.IoC;
 using GraphQL.StarWars.Types;
@@ -23,6 +23,7 @@ namespace GraphQL.GraphiQL
             container.Singleton(new StarWarsData());
             container.Register<StarWarsQuery>();
             container.Register<StarWarsMutation>();
+            container.Register<EPiServerManType>();
             container.Register<HumanType>();
             container.Register<HumanInputType>();
             container.Register<DroidType>();
